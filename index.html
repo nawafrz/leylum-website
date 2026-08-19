@@ -167,7 +167,19 @@ input,textarea,select{font-family:inherit;font-size:inherit;color:inherit}
   background-size:118% auto;background-repeat:no-repeat;justify-content:space-between}
 .pcard .save{background:var(--ink);color:var(--card);font-size:11px;font-weight:700;
   padding:5px 11px;border-radius:20px;white-space:nowrap}
-@media(max-width:860px){.pcards{grid-template-columns:1fr;gap:22px}.pcard{min-height:auto}}
+@media(max-width:860px){
+  .pcards{grid-template-columns:1fr 1fr;gap:12px}
+  .pcard{min-height:auto;padding:16px 14px 18px;border-radius:16px}
+  .pcard h3{font-size:15.5px}
+  .pcard .badge{width:36px;height:36px;font-size:8.5px}
+  .pcard hr{margin:12px 0}
+  .pcard .row .lbl{font-size:12px}
+  .pcard .row .val{font-size:10.5px}
+  .pcard .tag{font-size:9px;padding:3px 9px}
+  .pcard .shot{min-height:130px;margin:10px 0 12px}
+  .pcard .btn{padding:11px 10px;font-size:11.5px}
+  .pcards .pcard.bundle{grid-column:1/-1}
+}
 
 /* bundle hero card (home) */
 .bhero{background:var(--soft);border-radius:26px;overflow:hidden;position:relative;
@@ -271,7 +283,23 @@ input,textarea,select{font-family:inherit;font-size:inherit;color:inherit}
 .vcard:hover .play{background:rgba(255,255,255,.45)}
 .vcard .novid{position:absolute;bottom:12px;inset-inline-start:12px;background:rgba(0,0,0,.5);
   color:#fff;font-size:10px;padding:4px 9px;border-radius:20px;letter-spacing:.04em}
-@media(max-width:860px){.com-grid{grid-template-columns:1fr;gap:18px}}
+.vchip{position:absolute;bottom:12px;inset-inline-start:12px;inset-inline-end:12px;
+  background:rgba(247,243,239,.97);border-radius:14px;padding:9px 10px;display:flex;gap:9px;
+  align-items:center;color:var(--ink);overflow:hidden}
+.vchip .th{width:44px;height:44px;border-radius:9px;background:var(--sand) center/78% no-repeat;flex:0 0 auto}
+.vchip .inf{flex:1;min-width:0}
+.vchip b{display:block;font-weight:500;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vchip .ki{font-family:'Amiri',serif;font-style:italic;font-size:10.5px;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vchip .pr{font-size:11px;font-weight:700}
+.vchip button{border:1px solid var(--ink);border-radius:999px;padding:7px 13px;font-size:10.5px;font-weight:700;flex:0 0 auto;background:var(--card);white-space:nowrap}
+.vcard .ov{bottom:74px;padding-bottom:0;background:linear-gradient(to top,rgba(30,24,20,.5),rgba(30,24,20,0) 70%);
+  position:absolute;inset-inline:0;top:auto;height:40%;justify-content:flex-end}
+@media(max-width:860px){
+  .com-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;
+    scroll-snap-type:x mandatory;padding:0 4px 10px;scrollbar-width:none;direction:ltr}
+  .com-grid::-webkit-scrollbar{display:none}
+  .com-grid .vcard{flex:0 0 80%;scroll-snap-align:center;direction:rtl}
+}
 
 /* ============================================================
    testimonials
@@ -285,7 +313,12 @@ input,textarea,select{font-family:inherit;font-size:inherit;color:inherit}
 .tcard p{margin:0 0 14px;font-size:13.5px;line-height:1.8}
 .tcard .who{font-size:12px;font-weight:700}
 .tcard .who span{font-weight:300;opacity:.75}
-@media(max-width:860px){.testi-grid{grid-template-columns:1fr}}
+@media(max-width:860px){
+  .testi-grid{display:flex;grid-template-columns:none;gap:14px;overflow-x:auto;
+    scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:none;direction:ltr}
+  .testi-grid::-webkit-scrollbar{display:none}
+  .testi-grid .tcard{flex:0 0 78%;scroll-snap-align:center;direction:rtl}
+}
 
 /* ============================================================
    footer
@@ -893,9 +926,9 @@ var TESTI=[
 ];
 
 var COMMUNITY=[
-  {img:IMG.com1,vid:VIDEO.com1,t:'روتين الصباح',b:'«دقيقتين قبل المكياج، والفرق يبين طول اليوم.»'},
-  {img:IMG.com2,vid:VIDEO.com2,t:'أول أسبوع',b:'«وثّقت بشرتي كل يوم — النتيجة تتكلم عن نفسها.»'},
-  {img:IMG.com3,vid:VIDEO.com3,t:'قبل النوم',b:'«صارت آخر خطوة قبل ما أنام، وأحلى إحساس.»'}
+  {img:IMG.com1,vid:VIDEO.com1,p:'pads',t:'روتين الصباح',b:'«دقيقتين قبل المكياج، والفرق يبين طول اليوم.»'},
+  {img:IMG.com2,vid:VIDEO.com2,p:'cream',t:'أول أسبوع',b:'«وثّقت بشرتي كل يوم — النتيجة تتكلم عن نفسها.»'},
+  {img:IMG.com3,vid:VIDEO.com3,p:'bundle',t:'قبل النوم',b:'«صارت آخر خطوة قبل ما أنام، وأحلى إحساس.»'}
 ];
 
 var POLICY={
@@ -1150,9 +1183,15 @@ function communityBlock(){
     '<div class="sec-head"><h2>مجتمع <span class="ac">ليلوم</span></h2>'+
       '<p class="lede">بشرة حقيقية، روتين حقيقي، نتائج تشوفها بعينك.</p></div>'+
     '<div class="com-grid">'+COMMUNITY.map(function(c,i){
+      var pr=PRODUCTS[c.p];
       return '<div class="vcard" style="background-image:url('+c.img+')">'+
         '<video autoplay muted loop playsinline preload="auto" src="'+c.vid+'"></video>'+
-        '<div class="ov"><b>'+c.t+'</b><p>'+c.b+'</p></div></div>';}).join('')+
+        '<div class="ov"><b>'+c.t+'</b><p>'+c.b+'</p></div>'+
+        '<div class="vchip"><div class="th" style="background-image:url('+pr.img+')"></div>'+
+          '<div class="inf"><b>'+pr.name+'</b><span class="ki">'+pr.keyIng+'</span>'+
+          '<div class="pr">'+sar(pr.price)+'</div></div>'+
+          '<button onclick="addToCart(\''+pr.id+'\')">أضف</button></div>'+
+      '</div>';}).join('')+
     '</div></div></section>';
 }
 function playCard(el){
