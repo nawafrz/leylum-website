@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- leylum site v6 · 23 Aug 2026 · real packshots incl. new bundle composite, review placeholders removed -->
+<!-- leylum site v6 · 23 Aug 2026 · vF · real packshots incl. bundle composite · review placeholders removed · Arabic polish -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -973,6 +973,14 @@ body::after{content:"";position:fixed;inset:0;z-index:2000;pointer-events:none;o
   .totop,.announce span{transition:none}
 }
 
+
+/* ===== vF polish ===== */
+::selection{background:#27998922;color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid #279989;outline-offset:3px;border-radius:6px}
+html{scroll-behavior:smooth}
+.pcard .ph,.pcard [style*="background-image"]{transition:transform .6s cubic-bezier(.2,1,.3,1)}
+.pcard:hover .ph{transform:scale(1.035)}
+.announce,#annTxt{letter-spacing:.02em}
 </style>
 </head>
 <body>
@@ -1097,7 +1105,7 @@ var PRODUCTS={
     size:'منتجان — الروتين المتكامل · يكفي شهرين',
     keyIng:'مسحات التقشير اللطيف • كريم الإشراقة الفورية',
     rating:5, reviewCount:112,
-    perks:['أقل بـ20% من شرائهما منفصلين','خطوتان فقط — دقيقتان في اليوم','التركيبتان مصممتان لتعملا معًا'],
+    perks:['أقل بـ20% من شرائهما منفصلين','خطوتان فقط — دقيقتان في اليوم','تركيبتان تكمّلان بعضهما'],
     howHead:'كيف <span class="ac">تستخدمها</span>',
     how:[
       {img:IMG.how1,t:'مسحة',n:'01',b:'مرّر مسحة التقشير اللطيف على بشرة نظيفة، من الوجه إلى الرقبة.'},
@@ -1484,7 +1492,7 @@ function pageHome(){
     '</span><span>'+
     ['للاستخدام اليومي','تركيبات مدروسة لنتائج واضحة','فرق واضح من اليوم الأول','شحن مجاني للطلبات فوق 200 ريال'].join('</span><span>')+
     '</span></div></div>'+
-  '<div class="wrap"><div class="statement"><h2>العناية بالبشرة ما المفروض تاخذ أسابيع لتثبت إنها تشتغل. كل تركيبة من ليلوم مصمّمة لتحدث فرقًا ملحوظًا من اللحظة الأولى — <span class="ac">أو نرجّع لك فلوسك.</span></h2></div></div>'+
+  '<div class="wrap"><div class="statement"><h2>العناية بالبشرة المفروض ما تاخذ أسابيع عشان تثبت إنها تشتغل. كل تركيبة من ليلوم مصمّمة تعطيك فرقًا ملحوظًا من اللحظة الأولى — <span class="ac">أو نرجّع لك فلوسك.</span></h2></div></div>'+
   '<div class="wrap"><div class="sec-head"><h2>ابدأ <span class="ac">بالمجموعة</span></h2>'+
     '<p class="lede">الروتين المتكامل بخطوتين، بسعر أقل بـ20% من شرائهما منفصلين.</p></div>'+
     '<div class="bhero" style="background-image:url('+IMG.bundleWide+')">'+
@@ -1574,7 +1582,7 @@ function pagePDP(id){
     '<div class="box">'+p.stats.map(function(s){
       return '<div class="r"><div class="n">'+s[0]+'</div><div class="t">'+s[1]+'</div></div>';}).join('')+
     '</div></div></section>'+
-  '<div class="wrap"><div class="sec-head"><h2>'+p.crossHead+'</h2><p class="lede">التركيبتان مصمّمتان لتكملا بعضهما — خطوتان، نتيجة واحدة.</p></div>'+
+  '<div class="wrap"><div class="sec-head"><h2>'+p.crossHead+'</h2><p class="lede">تركيبتان تكمّلان بعضهما — خطوتان ونتيجة واحدة.</p></div>'+
     '<div class="pcards">'+crossCards+'</div></div>'+
   (p.spf?'<div class="wrap"><section class="spf"><div class="bar"><span class="i">!</span>'+
     '<span>الأحماض تزيد حساسية البشرة للشمس. استخدم واقي شمس SPF 30–50 يوميًا — يحمي نتائجك ويمنع ظهور البقع الداكنة.</span></div></section></div>':'')+
@@ -1657,7 +1665,7 @@ function pageAbout(){
   return '<div class="wrap pgpad"><div class="ab-hero">'+
     '<div><div class="ab-card" style="background-image:url('+IMG.wave+')">'+
       '<h1>تركيبات تشتغل <span class="ac">فعلًا.</span></h1></div>'+
-      '<p class="lede">نتائج تشوفها من أول استخدام، أو نرجّع لك فلوسك. كل تركيبة من ليلوم مصمّمة لتحدث فرقًا ملحوظًا من اللحظة التي تستخدمها فيها. وإذا ما شفت أو حسّيت بالفرق، نرجّع لك قيمة طلبك — لأن العناية بالبشرة ما المفروض تاخذ أسابيع لتثبت إنها تشتغل.</p></div>'+
+      '<p class="lede">نتائج تشوفها من أول استخدام، أو نرجّع لك فلوسك. كل تركيبة من ليلوم مصمّمة تعطيك فرقًا ملحوظًا من أول لحظة تستخدمها. وإذا ما شفت أو حسّيت بالفرق، نرجّع لك قيمة طلبك — لأن العناية بالبشرة المفروض ما تاخذ أسابيع عشان تثبت إنها تشتغل.</p></div>'+
     '<div class="ab-shot" style="background-image:url('+IMG.bundleWide+')"></div>'+
   '</div></div>'+
   '<div class="wrap"><nav class="ab-nav">'+
@@ -1665,7 +1673,7 @@ function pageAbout(){
       return '<a href="#ab-'+a[0]+'"'+(i===0?' class="on"':'')+'>'+a[1]+'</a>';}).join('')+
   '</nav></div>'+
   '<div class="wrap" id="ab-ing"><div class="sec-head"><h2>المكونات <span class="ac">الأساسية</span></h2>'+
-    '<p class="lede">كل تركيبة من ليلوم مبنية على عدد قليل من المكونات البطلة، مختارة بناءً على الأدلة، وبتركيز يكفي ليعطي نتيجة، ومركّبة بحيث <span class="ac">يقوّي كل مكوّن عمل الآخر</span>.</p></div>'+
+    '<p class="lede">كل تركيبة من ليلوم مبنية على مكونات قليلة ومثبتة، مختارة على أساس الأدلة، وبتركيز يكفي يعطي نتيجة، ومركّبة بطريقة تخلّي <span class="ac">كل مكوّن يقوّي عمل الآخر</span>.</p></div>'+
     '<div class="ab-ing"><div class="rows">'+AB_ING.map(function(x){
       return '<div><div class="lbl">'+x[0]+'</div><div class="dsc">'+x[1]+'</div></div>';}).join('')+'</div>'+
       '<div class="shots">'+AB_ING.map(function(x){
@@ -1673,10 +1681,10 @@ function pageAbout(){
           '<span class="bdg" style="background:'+x[4]+'">'+x[3]+'</span></div>';}).join('')+'</div>'+
     '</div></div>'+
   '<div id="ab-clin"><div class="wrap"><div class="sec-head"><h2>النتائج <span class="ac">السريرية</span></h2>'+
-    '<p class="lede">ما نطلب منك تصدقنا على كلامنا. قبل الإطلاق، وضعنا روتين ليلوم <span class="ac">بين أيدي أشخاص حقيقيين لمدة 21 يومًا</span> وطلبنا منهم يوثّقون بالضبط وش شافوا.</p></div></div>'+
+    '<p class="lede">ما نبيك تصدق كلامنا وبس. قبل الإطلاق، حطّينا روتين ليلوم <span class="ac">بين أيدي أشخاص حقيقيين لمدة 21 يومًا</span> وطلبنا منهم يوثّقون بالضبط وش شافوا.</p></div></div>'+
     clinicalPanel('clinAbout')+'</div>'+
   '<div id="ab-diff"><div class="wrap"><div class="sec-head"><h2>ليش نحن <span class="ac">مختلفون</span></h2>'+
-    '<p class="lede">أغلب ماركات العناية بالبشرة في المنطقة مستوردة ومصممة لبشرة شخص آخر، ومناخ آخر، ولغة أخرى. <span class="ac">ليلوم انبنت هنا، لأجل هنا، والفرق يبين في كل تفصيلة.</span></p></div></div>'+
+    '<p class="lede">أغلب ماركات العناية بالبشرة في المنطقة مستوردة ومصممة لبشرة شخص آخر، ومناخ آخر، ولغة أخرى. <span class="ac">ليلوم مبنية هنا، ولأجل هنا — والفرق يبين في كل تفصيلة.</span></p></div></div>'+
     diffTable()+'</div>'+
   '<section class="ab-values" id="ab-val" style="background-image:url('+IMG.com3+')"><div class="in">'+
     '<div><div class="eyebrow" style="color:#fff;margin-bottom:16px">قيمنا</div>'+
