@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- leylum site vG · 24 Aug 2026 · real packshots incl. bundle composite · review placeholders removed · Arabic polish -->
+<!-- leylum site vH · 24 Aug 2026 · animated sea + live cards · real packshots incl. bundle composite · review placeholders removed · Arabic polish -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -988,6 +988,16 @@ html{scroll-behavior:smooth}
 .com-grid .vcard:nth-child(2){animation-delay:-6s}
 .com-grid .vcard:nth-child(3){animation-delay:-12s}
 @media (prefers-reduced-motion:reduce){.vcard{animation:none}}
+
+/* ===== vH: living sea ===== */
+@keyframes lyWave{0%{transform:scale(1.02) translate3d(0,0,0)}100%{transform:scale(1.15) translate3d(1.6%,-2.2%,0)}}
+@keyframes lySheen{0%{background-position:135% 0,50% 48%}100%{background-position:-135% 0,50% 48%}}
+.wave::before{content:"";position:absolute;inset:-8% -5%;background:inherit;background-size:cover;background-position:center;
+  animation:lyWave 26s ease-in-out infinite alternate;will-change:transform;z-index:0}
+.wave::after{z-index:1;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.085) 50%,transparent 60%),
+  radial-gradient(70% 60% at 50% 48%,rgba(10,28,28,.44) 0%,rgba(10,28,28,.18) 60%,rgba(10,28,28,.06) 100%);
+  background-size:230% 100%,100% 100%;animation:lySheen 10s linear infinite}
+@media (prefers-reduced-motion:reduce){.wave::before,.wave::after{animation:none}}
 </style>
 </head>
 <body>
