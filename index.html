@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- leylum site vO · 31 Aug 2026 · full review: product-page photography, bundle card content, shop grid, mobile single column, lighter page, logo favicon -->
+<!-- leylum site vP · 1 Sep 2026 · mobile enhancement: sticky add-to-cart, swipeable how-to, tighter PDP/footer, thumb targets -->
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
@@ -1069,6 +1069,46 @@ main .pcards.shop-grid .pcard.bundle{grid-column:1/-1;min-height:420px}
 .empty,.co-empty{text-align:center;display:flex;flex-direction:column;align-items:center}
 .wave .in p{max-width:30ch}
 .bhero .save{background:var(--ink);color:#fff;border-radius:999px;padding:7px 14px;font-size:12px;font-weight:600;flex:0 0 auto}
+
+/* ===== vP: mobile enhancement ===== */
+@media(max-width:640px){
+  /* how-to: swipeable cards instead of a 1.4km stack */
+  .how .g{display:flex;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-inline-start:0}
+  .how .g::-webkit-scrollbar{display:none}
+  .how .g .c{flex:0 0 80%;scroll-snap-align:start;aspect-ratio:3/4}
+  .how .panel{padding-inline:12px}
+  .how .hint{display:block;text-align:center;font-size:12px;color:var(--ink);opacity:.75;margin-top:6px}
+  /* ingredients: shorter photo, tighter list */
+  .ing .pic{min-height:220px;order:-1}
+  .ing .opt .nm{font-size:22px}
+  /* PDP gallery a bit shorter on phones */
+  .pdp-gal .main{aspect-ratio:1/0.92}
+  .pdp-buy h1{font-size:27px;line-height:1.25}
+  /* footer: 2-column link grid instead of 3 stacked blocks */
+  .ftr-cols{grid-template-columns:1fr 1fr;gap:18px 12px;padding:30px 20px 18px}
+  .ftr-cols .col:last-child{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 22px;align-items:baseline}
+  .ftr-cols .col:last-child h4{width:100%}
+  .ftr-cols .col:last-child a{display:inline-block;width:auto;padding:4px 0}
+  .ftr-cols a{padding:7px 0}
+  /* comparison table rows breathe */
+  .diff td{padding:13px 6px}
+  /* buttons: comfortable thumb targets */
+  .btn{min-height:48px}
+  .pcard .btn{min-height:50px}
+  /* clinical stats slightly tighter */
+  .clin-panel .stat .n{font-size:34px}
+}
+.how .hint{display:none}
+/* sticky add-to-cart bar (mobile PDP) */
+.ly-sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:400;display:flex;gap:10px;align-items:center;background:rgba(247,243,239,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;padding:7px 7px 7px 18px;transform:translateY(130%);opacity:0;transition:transform .35s cubic-bezier(.22,.8,.3,1),opacity .3s;box-shadow:0 12px 30px rgba(84,80,75,.18);padding-bottom:calc(7px + env(safe-area-inset-bottom,0px))}
+.ly-sticky.show{transform:none;opacity:1}
+.ly-sticky .t{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.ly-sticky .t b{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink-2)}
+.ly-sticky .t span{font-size:12px;color:var(--ink)}
+.ly-sticky .btn{padding:12px 18px;font-size:13px;flex:0 0 auto;min-height:44px}
+body:has(.ly-sticky.show) .totop{bottom:86px}
+*{-webkit-tap-highlight-color:transparent}
+@media(prefers-reduced-motion:reduce){.ly-sticky{transition:none}}
 </style>
 </head>
 <body>
@@ -2183,6 +2223,28 @@ document.addEventListener('keydown',function(e){
     cw.style.transform='translate3d('+rx+'px,'+ry+'px,0)';
     requestAnimationFrame(loop);
   })();
+})();
+/* ===== vP: mobile sticky add-to-cart ===== */
+(function(){
+  function stickyBar(){
+    var old=document.getElementById('lySticky'); if(old) old.remove();
+    if(window.innerWidth>640) return;
+    var q=document.querySelector('.pdp-qty'); if(!q) return;
+    var name=document.querySelector('.pdp-buy h1'), price=document.querySelector('.pdp-buy .price'), btn=q.querySelector('.btn');
+    if(!name||!price||!btn) return;
+    var bar=document.createElement('div'); bar.id='lySticky'; bar.className='ly-sticky';
+    bar.innerHTML='<div class="t"><b></b><span></span></div>';
+    bar.querySelector('b').textContent=name.textContent; bar.querySelector('span').textContent=price.textContent;
+    var b2=btn.cloneNode(true); b2.classList.remove('btn-block'); b2.textContent='أضف إلى السلة'; bar.appendChild(b2);
+    document.body.appendChild(bar);
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ var e=en[0]; bar.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top<0); },{threshold:0}).observe(q);
+    }
+    var how=document.querySelector('.how .g'); if(how&&!how.nextElementSibling){ var h=document.createElement('div'); h.className='hint'; h.textContent='اسحب لعرض الخطوات ←'; how.parentNode.appendChild(h); }
+  }
+  var _r=window.render; if(typeof _r==='function'){ window.render=function(){ var out=_r.apply(this,arguments); setTimeout(stickyBar,60); return out; }; }
+  window.addEventListener('resize',function(){ clearTimeout(window._lySbT); window._lySbT=setTimeout(stickyBar,150); });
+  setTimeout(stickyBar,200);
 })();
 window.addEventListener('hashchange',function(){vtRender();});
 render();
